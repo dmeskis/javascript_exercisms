@@ -1,13 +1,13 @@
-const key = {'G': 'C',
-             'C': 'G',
-             'T': 'A',
-             'A': 'U'}
+const key = { G: "C", C: "G", T: "A", A: "U" };
 
-export const toRna = (sequence) => {
-  if (sequence === "") { return sequence; }
-  for (var i = 0; i < sequence.length; i++) {
-    sequence = sequence.replace(sequence[i], key[sequence[i]]);
-    // Stuck with a bug where last two characters are not being replaced, help!
+export const toRna = sequence => {
+  if (sequence === "") {
+    return sequence;
   }
-  return sequence;
+  return sequence.replace(/(G|C|T|A)/gi, replacer);
+};
+
+// Helper
+function replacer(match) {
+  return key[match];
 }
